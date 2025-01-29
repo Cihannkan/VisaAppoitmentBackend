@@ -14,5 +14,4 @@ func Getinfo() []models.Appoitment {
 	var Appoitments []models.Appoitment
 	json.Unmarshal(responsebody, &Appoitments)
 	return Appoitments
-
 }

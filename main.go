@@ -6,6 +6,5 @@ import (
 )
 
 func main() {
-	x := services.Getinfo()
-	fmt.Println(x)
+	fmt.Println(services.GetbyMissionCountry("Norway"))
 }
