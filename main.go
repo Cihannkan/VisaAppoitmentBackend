@@ -2,9 +2,20 @@ package main
 
 import (
 	"VisaAppoitmentBackend/services"
-	"fmt"
+
+	"github.com/gofiber/fiber/v3"
 )
 
 func main() {
-	fmt.Println(services.GetbyMissionCountry("Norway"))
+	app := fiber.New()
+
+	app.Get("/getmissioncountrylist", func(c fiber.Ctx) error {
+		return c.JSON(services.MissionCountryList())
+	})
+	app.Get("/getappointmentbycountry/:country", func(c fiber.Ctx) error {
+		country := c.Params("country")
+		return c.JSON(services.GetbyMissionCountry(country))
+	})
+
+	app.Listen(":3000")
 }

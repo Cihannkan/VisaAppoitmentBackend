@@ -2,10 +2,9 @@ package services
 
 import (
 	"VisaAppoitmentBackend/models"
-	"encoding/json"
 )
 
-func MissionCountryList() string {
+func MissionCountryList() []string {
 	Appoitments := Getinfo()
 	var missioncountrylist []string
 	for _, appo := range Appoitments {
@@ -13,8 +12,7 @@ func MissionCountryList() string {
 			missioncountrylist = append(missioncountrylist, appo.Mission_country)
 		}
 	}
-	jsoncountrylist, _ := json.Marshal(missioncountrylist)
-	return string(jsoncountrylist)
+	return missioncountrylist
 }
 
 func contains(slice []string, item string) bool {
@@ -26,14 +24,13 @@ func contains(slice []string, item string) bool {
 	return false
 }
 
-func GetbyMissionCountry(ülkeadi string) string {
+func GetbyMissionCountry(ülkeadi string) []models.Appoitment {
 	Appoitments := Getinfo()
-	var bysourcecountry []models.Appoitment
+	var bymissioncountry []models.Appoitment
 	for _, appo := range Appoitments {
 		if appo.Source_country == "Turkiye" && appo.Mission_country == ülkeadi {
-			bysourcecountry = append(bysourcecountry, appo)
+			bymissioncountry = append(bymissioncountry, appo)
 		}
 	}
-	jsonbysourcecountry, _ := json.Marshal(bysourcecountry)
-	return string(jsonbysourcecountry)
+	return bymissioncountry
 }
