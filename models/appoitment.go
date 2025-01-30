@@ -12,6 +12,3 @@ type Appoitment struct {
 	Book_now_link    string `json:"book_now_link"`
 	Last_checked     string `json:"last_checked"`
 }
-type Source_country struct {
-	Source_country string `json:"source_country"`
-}
