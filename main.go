@@ -16,6 +16,9 @@ func main() {
 		country := c.Params("country")
 		return c.JSON(services.GetbyMissionCountry(country))
 	})
+	app.Get("/", func(c fiber.Ctx) error {
+		return c.JSON(services.Getinfo())
+	})
 
 	app.Listen(":3000")
 }
